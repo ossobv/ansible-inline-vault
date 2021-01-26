@@ -10,7 +10,7 @@ setup(
     version='v0.1_rc1',
     scripts=['ansible-inline-vault'],
     data_files=[
-        ('share/ansible-inline-vault/filter_plugins', [
+        ('share/ansible-inline-vault/playbooks/filter_plugins', [
             'filter_plugins/decrypt.py'])],
     description=(
         'Decrypt files with inline ansible vault secrets'),

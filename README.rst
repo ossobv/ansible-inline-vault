@@ -69,3 +69,11 @@ Example Makefile
 
 Please ``values.yaml`` in ``.gitignore`` while you can commit
 ``.vault_pass`` as long as it does not contain the secret itself.
+
+
+Using inline vault passwords in ansible
+---------------------------------------
+
+Copy the ``filter_plugins/decrypt.py`` to your
+``playbooks/filter_plugins/`` directory and you should be able to use
+these inline vaulted secrets as well.
