@@ -1,7 +1,32 @@
 ansible-inline-vault
 ====================
 
-Setup:
+*Using ansible-vault encrypted secrets inline -- even without ansible.*
+
+Example:
+
+.. code-block:: console
+
+    $ cat some_file.ini.j2
+    username = john
+    password = {{ "$ANSIBLE_VAULT;1.1;AES256\n3238...3266"|decrypt }}
+
+.. code-block:: console
+
+    $ ansible-inline-vault decrypt some_file.ini.j2
+    username = john
+    password = secret_password
+
+This allows you to use *ansible-vault compatible* secrets in other
+devops projects.
+
+And for *real* ansible templates, there is a
+`<./filter_plugins/decrypt.py>`_ plugin, allowing you to use these
+inline secrets there too.
+
+
+Setup
+-----
 
 - create ``.vault_pass`` or an executable ``.vault_pass.py``:
 
@@ -29,7 +54,7 @@ Setup:
 
   .. code-block:: console
 
-    $ ansible-vault encrypt-string
+    $ ansible-inline-vault encrypt-string
     Reading plaintext input from stdin
     secret_password^D^D
     {{ "$ANSIBLE_VAULT;1.1;AES256\n3238...3266"|decrypt }}
